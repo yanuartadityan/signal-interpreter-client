@@ -28,5 +28,6 @@ def init_app():
     if __name__ == '__main__':
         main()
 
+
 # run app
 init_app()

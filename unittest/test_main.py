@@ -30,9 +30,7 @@ class MainTestClient(TestCase):
         self.assertEqual(parsed_short.signal, '11')
 
     @staticmethod
-    @patch('sys.argv', ['test_main',
-                        '--signal',
-                        '27'])
+    @patch('sys.argv', ['test_main', '--signal', '27'])
     def test_main():
         """
         test_main --> check if message post is called at least once
@@ -43,8 +41,7 @@ class MainTestClient(TestCase):
             mock_run.assert_called_once()
 
     @staticmethod
-    @patch('signal_interpreter_client.src_client.main.__name__',
-            '__main__')
+    @patch('signal_interpreter_client.src_client.main.__name__', '__main__')
     @patch('sys.argv', ['test_main', '--signal', '11'])
     def test_init():
         """

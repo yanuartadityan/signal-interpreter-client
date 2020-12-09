@@ -29,6 +29,5 @@ def test_post_database(json_input, expected_result):
         "signal": json_input
     }
 
-    s = message_post("http://127.0.0.1:5000", message)
-    assert s.json() == expected_result
-    
+    s_response = message_post("http://127.0.0.1:5000", message)
+    assert s_response.json() == expected_result
