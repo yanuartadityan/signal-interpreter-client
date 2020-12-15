@@ -6,6 +6,7 @@ from requests.exceptions import Timeout
 import pytest
 
 from signal_interpreter_client.src_client.server_communication_handler import message_post
+from signal_interpreter_server.src_server.json_parser import SignalParser
 
 
 @patch("signal_interpreter_client.src_client.server_communication_handler.requests.post", side_effect=Timeout)

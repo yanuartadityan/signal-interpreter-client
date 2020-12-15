@@ -1,8 +1,12 @@
 """
 main.py
 """
+import logging
 from argparse import ArgumentParser
 from signal_interpreter_client.src_client.server_communication_handler import message_post
+from signal_interpreter_client.src_client.exceptions import ClientError
+
+logger = logging.getLogger(__name__)
 
 
 def main():
@@ -17,8 +21,12 @@ def main():
         "signal": parsed_args.signal
     }
 
-    return_value = message_post("http://127.0.0.1:5000", message)
-    print(return_value)
+    try:
+        return_value = message_post("http://127.0.0.1:5000", message)
+        print(return_value)
+    except Exception as err:
+        logger.exception("Error while sending POST message")
+        raise ClientError("Error while sending POST message") from err
 
 
 def init_app():
